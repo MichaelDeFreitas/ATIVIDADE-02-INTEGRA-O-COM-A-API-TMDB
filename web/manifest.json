@@ -1,0 +1,35 @@
+{
+    "name": "atividade_2_main",
+    "short_name": "atividade_2_main",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "Projeto que procura evoluir o aplicativo Flutter desenvolvido durante a disciplina, implementando duas funcionalidades adicionais por meio da API The Movie Database (TMDB).  O objetivo é consolidar conhecimentos sobre consumo de APIs REST, autenticação, modelagem de dados, gerenciamento de estado e integração com interfaces móveis.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

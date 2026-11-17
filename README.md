@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # atividade_2_main
 
 Projeto que procura evoluir o aplicativo Flutter desenvolvido durante a disciplina, implementando duas funcionalidades adicionais por meio da API The Movie Database (TMDB).  O objetivo é consolidar conhecimentos sobre consumo de APIs REST, autenticação, modelagem de dados, gerenciamento de estado e integração com interfaces móveis.
@@ -15,3 +16,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# ATIVIDADE-02-INTEGRA-O-COM-A-API-TMDB
+Projeto que procura voluir o aplicativo Flutter desenvolvido durante a disciplina, implementando duas funcionalidades adicionais por meio da API The Movie Database (TMDB).  O objetivo é consolidar conhecimentos sobre consumo de APIs REST, autenticação, modelagem de dados, gerenciamento de estado e integração com interfaces móveis.
+>>>>>>> bdc6579a401994a8a9435eeb4dbc5ca4a5ecfcb0

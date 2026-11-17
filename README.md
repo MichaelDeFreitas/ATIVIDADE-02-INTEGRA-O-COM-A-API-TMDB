@@ -1,22 +1,42 @@
-<<<<<<< HEAD
-# atividade_2_main
+# Atividade 02 — Integração com a API TMDB (PDM2)
 
-Projeto que procura evoluir o aplicativo Flutter desenvolvido durante a disciplina, implementando duas funcionalidades adicionais por meio da API The Movie Database (TMDB).  O objetivo é consolidar conhecimentos sobre consumo de APIs REST, autenticação, modelagem de dados, gerenciamento de estado e integração com interfaces móveis.
+Aplicativo Flutter desenvolvido para a disciplina de **Programação para Dispositivos Móveis 2 (PDM2)**, evoluindo a base do projeto com a integração de operações autenticadas e consulta de dados na API **The Movie Database (TMDB)**.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📋 Funcionalidades Implementadas
 
-A few resources to get you started if this is your first Flutter project:
+Foram implementados e integrados à interface gráfica os seguintes endpoints da API v3 do TMDB:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+1. **Próximos Lançamentos (`GET /movie/upcoming`)**
+   - Consulta a lista de filmes com lançamento previsto.
+   - Exibe pôster, título e data de lançamento na tela inicial (`UpcomingMoviesView`).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# ATIVIDADE-02-INTEGRA-O-COM-A-API-TMDB
-Projeto que procura voluir o aplicativo Flutter desenvolvido durante a disciplina, implementando duas funcionalidades adicionais por meio da API The Movie Database (TMDB).  O objetivo é consolidar conhecimentos sobre consumo de APIs REST, autenticação, modelagem de dados, gerenciamento de estado e integração com interfaces móveis.
->>>>>>> bdc6579a401994a8a9435eeb4dbc5ca4a5ecfcb0
+2. **Gerenciamento de Favoritos (`POST /account/{account_id}/favorite`)**
+   - Permite ao usuário autenticado adicionar ou remover um filme da sua lista de favoritos na tela de detalhes (`MovieDetailView`).
+   - Atualiza o estado visual do botão e exibe feedback via `SnackBar`.
+
+3. **Avaliação de Filmes (`POST /movie/{movie_id}/rating`)**
+   - Permite atribuir notas de **0,5 a 10,0** (com incrementos de **0,5**) por meio de um componente `Slider`.
+   - Envia a avaliação vinculada à sessão do usuário e exibe confirmação visual.
+
+4. **Remoção de Avaliação (`DELETE /movie/{movie_id}/rating`)**
+   - Permite excluir uma avaliação previamente registrada para o filme selecionado, exibindo feedback imediato na interface.
+
+---
+
+## 🏗️ Arquitetura e Organização do Projeto
+
+O projeto mantém a separação de responsabilidades entre interface, modelos de dados e comunicação HTTP:
+
+```text
+lib/
+├── main.dart                     # Ponto de entrada da aplicação
+├── models/
+│   └── movie_model.dart          # Modelo tipado para conversão do JSON da API TMDB
+├── services/
+│   └── tmdb_service.dart         # Camada de comunicação REST utilizando o pacote Dio
+└── views/
+    ├── login_view.dart           # Fluxo de autenticação e geração de session_id
+    ├── upcoming_movies_view.dart # Tela de listagem de próximos lançamentos (FutureBuilder)
+    └── movie_detail_view.dart    # Tela de detalhes com ações autenticadas (favoritar e avaliar)

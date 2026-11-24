@@ -1,30 +1,40 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:atividade_2_main/main.dart';
+import 'package:atividade_2_main/models/movie_model.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  test('Movie.fromJson converte os campos da resposta TMDB', () {
+    final movie = Movie.fromJson({
+      'id': 123,
+      'title': 'Filme de teste',
+      'overview': 'Uma sinopse.',
+      'poster_path': '/poster.jpg',
+      'release_date': '2026-12-25',
+      'vote_average': 7.5,
+    });
+    expect(movie.id, 123);
+    expect(movie.title, 'Filme de teste');
+    expect(movie.posterUrl, 'https://image.tmdb.org/t/p/w500/poster.jpg');
+    expect(movie.releaseDate, DateTime(2026, 12, 25));
+    expect(movie.voteAverage, 7.5);
+    expect(movie.userRating, isNull);
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  test('Movie separa a avaliação pessoal da média geral do TMDB', () {
+    final movie = Movie.fromJson({
+      'id': 456,
+      'title': 'Filme avaliado',
+      'vote_average': 7.2,
+      'rating': 9.5,
+    });
+    expect(movie.voteAverage, 7.2);
+    expect(movie.userRating, 9.5);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('Movie aceita dados opcionais ausentes', () {
+    final movie = Movie.fromJson({'id': 1, 'title': 'Sem detalhes'});
+    expect(movie.overview, '');
+    expect(movie.posterUrl, isNull);
+    expect(movie.releaseDate, isNull);
+    expect(movie.voteAverage, 0);
   });
 }

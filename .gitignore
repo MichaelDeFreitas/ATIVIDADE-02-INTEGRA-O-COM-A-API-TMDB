@@ -43,3 +43,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Configurações locais e credenciais
+/android/local.properties
+.env
+.env.*
+!.env.example
